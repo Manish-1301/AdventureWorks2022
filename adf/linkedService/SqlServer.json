@@ -1,12 +1,11 @@
 {
 	"name": "SqlServer",
-	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "SqlServer",
 		"typeProperties": {
 			"server": "DESKTOP-400TSID\\SQLEXPRESS",
-			"database": "AdventureWorks2022",
+			"database": "AdventureWorksLT2022",
 			"encrypt": "mandatory",
 			"trustServerCertificate": true,
 			"authenticationType": "SQL",
@@ -24,5 +23,6 @@
 			"referenceName": "SHIR",
 			"type": "IntegrationRuntimeReference"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
 }
