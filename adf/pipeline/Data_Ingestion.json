@@ -3,8 +3,8 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy Address table",
-				"type": "Copy",
+				"name": "Lookup for tables",
+				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -17,40 +17,16 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
+						"sqlReaderQuery": "SELECT \ns.name AS SchemaName,\nt.name AS TableName\nFROM sys.tables t\nINNER JOIN sys.schemas s\nON t.schema_id = s.schema_id\nWHERE s.name = 'SalesLT'",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
-					"sink": {
-						"type": "ParquetSink",
-						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
-						},
-						"formatSettings": {
-							"type": "ParquetWriteSettings"
-						}
+					"dataset": {
+						"referenceName": "AdventureWorks",
+						"type": "DatasetReference"
 					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "address",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "address_parquet",
-						"type": "DatasetReference"
-					}
-				]
+					"firstRowOnly": false
+				}
 			}
 		],
 		"annotations": []
