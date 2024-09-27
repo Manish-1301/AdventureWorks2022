@@ -16,15 +16,9 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "ParquetSource",
-						"storeSettings": {
-							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "ParquetReadSettings"
-						}
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
 					},
 					"sink": {
 						"type": "ParquetSink",
@@ -47,7 +41,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "address_parquet",
+						"referenceName": "SqlServerTable1",
 						"type": "DatasetReference"
 					}
 				],
