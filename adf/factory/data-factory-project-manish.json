@@ -1,0 +1,9 @@
+{
+	"name": "data-factory-project-manish",
+	"location": "southeastasia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "efaf1878-bc8b-42c0-b070-9fe6f2dc208a",
+		"tenantId": "113511a4-608b-4be7-add0-a380fde84010"
+	}
+}
