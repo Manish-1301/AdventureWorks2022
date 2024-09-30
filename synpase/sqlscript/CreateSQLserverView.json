@@ -2,7 +2,7 @@
 	"name": "CreateSQLserverView",
 	"properties": {
 		"content": {
-			"query": "USE gold_db\nGO\n\nCREATE OR ALTER PROC CreateSQLServerlessView_gold @ViewName\nnvarchar(100)\nAS\nBEGIN\n\nDECLARE @statement VARCHAR(MAX)\n SET @statement = N'CREATE OR ALTER VIEW ' + @ViewName + ' AS\n SELECT \n    *\n FROM\n    OPENROWSET(\n        BULK ''https://dataengineer12.dfs.core.windows.net/gold/SalesLT/' + @ViewName + '/'',\n        FORMAT = ''DELTA''\n    ) AS [result]\n '\nEXEC (@statement)\nEND\nGO",
+			"query": "USE Gold_db\nGO\n\nCREATE OR ALTER PROC CreateSQLServerlessView_gold @ViewName NVARCHAR(100)\nAS\nBEGIN\n    -- Validate @ViewName if necessary here\n    DECLARE @statement NVARCHAR(MAX)\n    \n    SET @statement = N'CREATE OR ALTER VIEW ' + QUOTENAME(@ViewName) + N' AS\n    SELECT *\n    FROM OPENROWSET(\n        BULK ''https://dataengineer12.dfs.core.windows.net/gold/SalesLT/' + @ViewName + '/'', \n        FORMAT = ''DELTA''\n    ) AS [result]'\n\n    EXEC sp_executesql @statement\nEND\nGO\n",
 			"metadata": {
 				"language": "sql"
 			},
