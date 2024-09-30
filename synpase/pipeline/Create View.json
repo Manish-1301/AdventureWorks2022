@@ -1,5 +1,5 @@
 {
-	"name": "Pipeline 1",
+	"name": "Create View",
 	"properties": {
 		"activities": [
 			{
@@ -51,7 +51,7 @@
 					"isSequential": false,
 					"activities": [
 						{
-							"name": "Stored procedure1",
+							"name": "Create View",
 							"type": "SqlServerStoredProcedure",
 							"dependsOn": [],
 							"policy": {
