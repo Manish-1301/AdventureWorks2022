@@ -1,0 +1,17 @@
+{
+	"name": "CreateSQLserverView",
+	"properties": {
+		"content": {
+			"query": "USE gold_db\nGO\n\nCREATE OR ALTER PROC CreateSQLServerlessView_gold @ViewName\nnvarchar(100)\nAS\nBEGIN\n\nDECLARE @statement VARCHAR(MAX)\n SET @statement = N'CREATE OR ALTER VIEW ' + @ViewName + ' AS\n SELECT \n    *\n FROM\n    OPENROWSET(\n        BULK ''https://dataengineer12.dfs.core.windows.net/gold/SalesLT/' + @ViewName + '/'',\n        FORMAT = ''DELTA''\n    ) AS [result]\n '\nEXEC (@statement)\nEND\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "Gold_db",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
