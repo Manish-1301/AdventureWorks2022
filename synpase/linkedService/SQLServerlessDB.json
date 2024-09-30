@@ -1,0 +1,14 @@
+{
+	"name": "SQLServerlessDB",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "synpase-wokspace-ondemand.sql.azuresynapse.net",
+			"database": "Gold_db",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SystemAssignedManagedIdentity"
+		}
+	}
+}
